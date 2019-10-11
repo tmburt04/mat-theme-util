@@ -17,7 +17,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "theme-util": [
+        "dist/mat-theme-util"
+      ],
+      "theme-util/*": [
+        "dist/mat-theme-util/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

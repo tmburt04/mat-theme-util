@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "MaterialThemeUtil": {
+    "MaterialThemeUtilSolution": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/MaterialThemeUtil",
+            "outputPath": "dist/MaterialThemeUtilSolution",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,7 +24,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -58,18 +58,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "MaterialThemeUtil:build"
+            "browserTarget": "MaterialThemeUtilSolution:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "MaterialThemeUtil:build:production"
+              "browserTarget": "MaterialThemeUtilSolution:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "MaterialThemeUtil:build"
+            "browserTarget": "MaterialThemeUtilSolution:build"
           }
         },
         "test": {
@@ -106,15 +106,51 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "MaterialThemeUtil:serve"
+            "devServerTarget": "MaterialThemeUtilSolution:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "MaterialThemeUtil:serve:production"
+              "devServerTarget": "MaterialThemeUtilSolution:serve:production"
             }
           }
         }
       }
-    }},
-  "defaultProject": "MaterialThemeUtil"
+    },
+    "MaterialThemeUtil": {
+      "projectType": "library",
+      "root": "projects/mat-theme-util",
+      "sourceRoot": "projects/mat-theme-util/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/mat-theme-util/tsconfig.lib.json",
+            "project": "projects/mat-theme-util/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/mat-theme-util/src/test.ts",
+            "tsConfig": "projects/mat-theme-util/tsconfig.spec.json",
+            "karmaConfig": "projects/mat-theme-util/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/mat-theme-util/tsconfig.lib.json",
+              "projects/mat-theme-util/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "MaterialThemeUtilSolution"
 }

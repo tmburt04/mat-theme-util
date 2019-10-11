@@ -1,0 +1,23 @@
+{
+  "name": "mat-theme-util",
+  "version": "0.1.0",
+  "description": "Angular Material 8+ Helper Utility for managing Theme colors dynamically, and creating color palettes from single colors.",
+  "scripts": {
+    "build": "ng-packagr -p package.json"
+  },
+  "author": "Tim M. Burton <timmichaelburton@gmail.com> (mailto:timmichaelburton@gmail.com)",
+  "peerDependencies": {
+    "@angular/common": "^8.1.3",
+    "@angular/core": "^8.1.3"
+  },
+  "license": "MIT",
+  "keywords": [
+    "Angular",
+    "Material",
+    "Theme",
+    "Colors",
+    "Palette",
+    "Dynamic",
+    "Utility"
+  ]
+}

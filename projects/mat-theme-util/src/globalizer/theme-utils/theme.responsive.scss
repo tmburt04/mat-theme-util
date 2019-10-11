@@ -1,0 +1,247 @@
+$nums: (1: 1,
+  2: 2,
+  3: 3,
+  4: 4,
+  5: 5,
+  6: 6);
+
+$grids: (1: minmax(100px, 1fr),
+  2: minmax(100px, 1fr) minmax(100px, 1fr),
+  3: minmax(100px, 1fr) minmax(100px, 1fr) minmax(100px, 1fr),
+  4: minmax(50px, 1fr) minmax(50px, 1fr) minmax(50px, 1fr) minmax(50px, 1fr),
+  5: minmax(50px, 1fr) minmax(50px, 1fr) minmax(50px, 1fr) minmax(50px, 1fr) minmax(50px, 1fr),
+  6: minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr),
+  "aa": auto auto,
+  "a1": auto 1fr,
+  "1a": 1fr auto,
+  "1-2": minmax(100px, 1fr) minmax(300px, 2fr),
+  "2-1": minmax(300px, 2fr) minmax(100px, 1fr),
+  "1-3": minmax(100px, 1fr) minmax(300px, 3fr),
+  "3-1": minmax(300px, 3fr) minmax(100px, 1fr),
+  "2-3": minmax(175px, 2fr) minmax(275px, 3fr),
+  "3-2": minmax(275px, 3fr) minmax(175px, 2fr));
+
+.hide {
+  display: none !important;
+}
+
+.show {
+  display: grid;
+}
+
+.center {
+  text-align: center;
+}
+
+.margin-unset {
+  margin: unset !important;
+}
+
+@each $name,
+$val in $nums {
+  .vpadding#{$name} {
+    padding-top: #{$name}rem;
+    padding-bottom: #{$name}rem;
+  }
+
+  .hpadding#{$name} {
+    padding-left: #{$name}rem;
+    padding-right: #{$name}rem;
+  }
+
+  .padding#{$name} {
+    padding: #{$name}rem;
+  }
+
+  .vmargin#{$name} {
+    margin-top: #{$name}rem;
+    margin-bottom: #{$name}rem;
+  }
+
+  .hmargin#{$name} {
+    margin-left: #{$name}rem;
+    margin-right: #{$name}rem;
+  }
+
+  .margin#{$name} {
+    margin: #{$name}rem;
+  }
+
+  .vmin#{$name} {
+    grid-template-rows: repeat(#{$name}, min-content);
+  }
+}
+
+@each $name,
+$val in $grids {
+  .col#{$name} {
+    display: grid !important;
+    grid-column-gap: 1rem;
+    grid-row-gap: 1rem;
+    grid-template-columns: $val;
+  }
+}
+
+.col-autofill {
+  display: grid !important;
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+  grid-template-columns: repeat(autofill, minmax(25px, 1fr));
+}
+
+.col-autofit {
+  display: grid !important;
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+  grid-template-columns: repeat(autofit, minmax(25px, 1fr));
+}
+
+@media (max-width: 600px) {
+  .hide-xs {
+    display: none !important;
+  }
+
+  .show-xs {
+    display: grid;
+  }
+
+  @each $name,
+  $val in $grids {
+    .col#{$name}-xs-wide {
+      display: grid !important;
+      grid-column-gap: 1rem;
+      grid-row-gap: 1rem;
+      grid-template-columns: $val;
+    }
+  }
+
+  @each $name,
+  $val in $grids {
+    .col#{$name}-xs {
+      display: grid !important;
+      grid-column-gap: 0.5rem;
+      grid-row-gap: 0.5rem;
+      grid-template-columns: $val;
+    }
+  }
+}
+
+@media (min-width: 600px) and (max-width: 768px) {
+  .hide-sm {
+    display: none !important;
+  }
+
+  .show-sm {
+    display: grid;
+  }
+
+  @each $name,
+  $val in $grids {
+    .col#{$name}-sm-wide {
+      display: grid !important;
+      grid-column-gap: 1rem;
+      grid-row-gap: 1rem;
+      grid-template-columns: $val;
+    }
+  }
+
+  @each $name,
+  $val in $grids {
+    .col#{$name}-sm {
+      display: grid !important;
+      grid-column-gap: 0.5rem;
+      grid-row-gap: 0.5rem;
+      grid-template-columns: $val;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .hide-md {
+    display: none !important;
+  }
+
+  .show-md {
+    display: grid;
+  }
+
+  @each $name,
+  $val in $grids {
+    .col#{$name}-md-wide {
+      display: grid !important;
+      grid-column-gap: 2rem;
+      grid-row-gap: 2rem;
+      grid-template-columns: $val;
+    }
+  }
+
+  @each $name,
+  $val in $grids {
+    .col#{$name}-md {
+      display: grid !important;
+      grid-column-gap: 1rem;
+      grid-row-gap: 1rem;
+      grid-template-columns: $val;
+    }
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .hide-lg {
+    display: none !important;
+  }
+
+  .show-lg {
+    display: grid;
+  }
+
+  @each $name,
+  $val in $grids {
+    .col#{$name}-lg-wide {
+      display: grid !important;
+      grid-column-gap: 2rem;
+      grid-row-gap: 2rem;
+      grid-template-columns: $val;
+    }
+  }
+
+  @each $name,
+  $val in $grids {
+    .col#{$name}-lg {
+      display: grid !important;
+      grid-column-gap: 1rem;
+      grid-row-gap: 1rem;
+      grid-template-columns: $val;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .hide-xl {
+    display: none !important;
+  }
+
+  .show-xl {
+    display: grid;
+  }
+
+  @each $name,
+  $val in $grids {
+    .col#{$name}-xl-wide {
+      display: grid !important;
+      grid-column-gap: 2rem;
+      grid-row-gap: 2rem;
+      grid-template-columns: $val;
+    }
+  }
+
+  @each $name,
+  $val in $grids {
+    .col#{$name}-xl {
+      display: grid !important;
+      grid-column-gap: 1rem;
+      grid-row-gap: 1rem;
+      grid-template-columns: $val;
+    }
+  }
+}

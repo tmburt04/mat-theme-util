@@ -1,0 +1,95 @@
+$colors: (primary: $primary,
+  accent: $accent,
+  warn: $warn);
+
+$multipliers: (1: 1,
+  2: 1.25,
+  3: 1.5,
+  4: 2,
+  5: 3);
+
+@each $k,
+$v in $colors {
+  .#{$k}-bg {
+    background-color: mat-color($v) !important;
+    color: mat-color($background, card) !important;
+  }
+
+  .#{$k}-color {
+    color: mat-color($v) !important;
+    background-color: mat-color($background, card) !important;
+  }
+
+  .flat-card-#{$k} {
+    border-top: 0.4rem solid mat-color($v);
+    background: white;
+    padding: 1rem;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  @each $_k,
+  $_v in $multipliers {
+    .#{$k}-header#{$_k} {
+      border-top: calc(0.135rem * #{$_v}) solid gray;
+      border-bottom: calc(0.4rem * #{$_v}) solid mat-color($v);
+    }
+  }
+}
+
+@each $k,
+$v in $multipliers {
+  .main-header#{$k} {
+    border-top: calc(0.135rem * #{$v}) solid mat-color($primary);
+    border-bottom: calc(0.4rem * #{$v}) solid mat-color($accent);
+  }
+
+  .invert-header#{$k} {
+    border-top: calc(0.15rem * #{$v}) solid mat-color($accent);
+    border-bottom: calc(0.3rem * #{$v}) solid mat-color($primary);
+  }
+
+  .anti-gravity-z#{$k} {
+    box-shadow: inset 0px 0px calc(2px * #{$v}) rgba(50, 50, 50, 0.75) !important;
+  }
+}
+
+.link {
+  cursor: pointer;
+}
+
+.invisibility-cloak {
+  background-color: transparent !important;
+}
+
+.hard-edges {
+  * {
+    border-radius: 0 !important;
+  }
+}
+
+.gray {
+  color: rgba(128, 128, 128, 0.75);
+}
+
+.green {
+  color: rgba(0, 128, 0, 0.75);
+}
+
+.red {
+  color: rgba(255, 0, 0, 0.75);
+}
+
+.gold {
+  color: rgba(255, 217, 0, 0.75);
+}
+
+.warning-alert {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-column-gap: 1.5rem;
+  color: rgba(255, 166, 0, 0.75);
+  background: rgba(255, 166, 0, 0.25);
+  border: 2px solid rgba(255, 166, 0, 0.75);
+  border-radius: 5px;
+}

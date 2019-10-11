@@ -1,0 +1,9 @@
+<div>
+  <input
+    type="color"
+    #colorPicker
+    (change)="_color = colorPicker.value; colorChange.emit(this._color)"
+    [value]="_color"
+  />
+  {{ _color }}
+</div>
