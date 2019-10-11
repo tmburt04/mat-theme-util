@@ -16,19 +16,7 @@ This library _should_ seamlessly integrate with most Angular Material applicatio
 
 ### 1. Install Material Theme Util package
 
-### 2. Import the following stylesheets in
-
-`./styles.scss`
-
-```scss
-@import "~@angular/material/theming";
-@include mat-core();
-@import "~mat-theme-util/theme-util";
-```
-
-> No material theme should be imported, defined or set.
-
-### 3. Import the following packages in your AppModule
+### 2. Import the following packages in your AppModule
 
 ```javascript
 ...
@@ -46,6 +34,27 @@ import { ThemeUtilModule, ThemeUtilService } from 'mat-theme-util';
 })
 export class AppModule { }
 ```
+
+### 3. Choose the designated HTML Element that you want to contain the theme
+
+```html
+...
+<body #THEME_CONTAINER>
+  ...
+</body>
+```
+
+### 4. Import the following stylesheets
+
+`./styles.scss`
+
+```scss
+@import "~@angular/material/theming";
+@include mat-core();
+@import "~mat-theme-util/theme-util";
+```
+
+> No material theme should be imported, defined or set.
 
 ### Usage
 
