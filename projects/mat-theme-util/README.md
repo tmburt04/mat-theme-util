@@ -85,7 +85,7 @@ export class AppModule { }
 
 > This code can be used in any component the **ThemeUtilService** is autowired
 
-## Bonus Features
+## Additional Features
 
 ### Color Extensions
 

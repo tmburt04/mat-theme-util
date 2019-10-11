@@ -8,10 +8,10 @@
   </div>
   <mat-palette-picker
     paletteType="PRIMARY"
-    [colorCode]="p"
+    [colorCode]="primary"
   ></mat-palette-picker>
-  <mat-palette-picker paletteType="ACCENT" [colorCode]="a"></mat-palette-picker>
-  <mat-palette-picker paletteType="WARN" [colorCode]="w"></mat-palette-picker>
+  <mat-palette-picker paletteType="ACCENT" [colorCode]="accent"></mat-palette-picker>
+  <mat-palette-picker paletteType="WARN" [colorCode]="warn"></mat-palette-picker>
 </section>
 
 <section class="margin1">
@@ -22,27 +22,27 @@
     <input
       type="color"
       #pPicker
-      (change)="p = pPicker.value; updateP()"
-      [value]="p"
+      (change)="primary = pPicker.value; updatePrimary()"
+      [value]="primary"
     />
-    {{ p }}
+    {{ primary }}
   </div>
   <div>
     <input
       type="color"
       #aPicker
-      (change)="a = aPicker.value; updateA()"
-      [value]="a"
+      (change)="accent = aPicker.value; updateAccent()"
+      [value]="accent"
     />
-    {{ a }}
+    {{ accent }}
   </div>
   <div>
     <input
       type="color"
       #wPicker
-      (change)="w = wPicker.value; updateW()"
-      [value]="w"
+      (change)="warn = wPicker.value; updateWarn()"
+      [value]="warn"
     />
-    {{ w }}
+    {{ warn }}
   </div>
 </section>

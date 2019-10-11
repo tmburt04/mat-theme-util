@@ -15,9 +15,15 @@ export class AppComponent {
     this.themeUtil.initTheme(this.primary, this.accent, this.warn);
   }
 
-  updatePrimary(hexCode: string) {
-    this.themeUtil.setPrimaryPalette(hexCode);
-    // this.themeUtil.setAccentPalette(hexCode);
-    // this.themeUtil.setWarnPalette(hexCode);
+  updatePrimary() {
+    this.themeUtil.setPrimaryPalette(this.primary);
+  }
+
+  updateAccent() {
+    this.themeUtil.setAccentPalette(this.accent);
+  }
+
+  updateWarn() {
+    this.themeUtil.setWarnPalette(this.warn);
   }
 }

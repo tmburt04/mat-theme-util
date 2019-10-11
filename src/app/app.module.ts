@@ -4,7 +4,7 @@ import { MatToolbarModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { ThemeUtilModule, ThemeUtilService } from 'mat-theme-util';
+import { ThemeUtilModule, ThemeUtilService } from "projects/mat-theme-util/src/public-api";
 
 @NgModule({
   declarations: [
