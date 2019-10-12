@@ -15,7 +15,7 @@ class HueMap<T> {
 }
 
 class PaletteModel {
-  @ViewChild("THEME_CONTAINER", { static: true }) themeContainer: ElementRef;
+  themeContainer = document.querySelector('body');
 
   private paletteType: string;
 
@@ -58,27 +58,31 @@ class PaletteModel {
   // @TODO Make the contrast more dynamic
   public assignPalette = (format: ColorFormat = ColorFormat.HEX) => {
     const t = this.paletteType;
-    const themeEl = this.themeContainer.nativeElement;
-    themeEl.style.setProperty(`--${t}-50`, this._50.toStr(format));
-    themeEl.style.setProperty(`--${t}-100`, this._100.toStr(format));
-    themeEl.style.setProperty(`--${t}-200`, this._200.toStr(format));
-    themeEl.style.setProperty(`--${t}-300`, this._300.toStr(format));
-    themeEl.style.setProperty(`--${t}-400`, this._400.toStr(format));
-    themeEl.style.setProperty(`--${t}-500`, this._500.toStr(format));
-    themeEl.style.setProperty(`--${t}-600`, this._600.toStr(format));
-    themeEl.style.setProperty(`--${t}-700`, this._700.toStr(format));
-    themeEl.style.setProperty(`--${t}-800`, this._800.toStr(format));
-    themeEl.style.setProperty(`--${t}-900`, this._900.toStr(format));
-    themeEl.style.setProperty(`--${t}-A100`, this._A100.toStr(format));
-    themeEl.style.setProperty(`--${t}-A200`, this._A200.toStr(format));
-    themeEl.style.setProperty(`--${t}-A400`, this._A400.toStr(format));
-    themeEl.style.setProperty(`--${t}-A700`, this._A700.toStr(format));
+    const themeEl = this.themeContainer;
+    if (!!themeEl) {
+      themeEl.style.setProperty(`--${t}-50`, this._50.toStr(format));
+      themeEl.style.setProperty(`--${t}-100`, this._100.toStr(format));
+      themeEl.style.setProperty(`--${t}-200`, this._200.toStr(format));
+      themeEl.style.setProperty(`--${t}-300`, this._300.toStr(format));
+      themeEl.style.setProperty(`--${t}-400`, this._400.toStr(format));
+      themeEl.style.setProperty(`--${t}-500`, this._500.toStr(format));
+      themeEl.style.setProperty(`--${t}-600`, this._600.toStr(format));
+      themeEl.style.setProperty(`--${t}-700`, this._700.toStr(format));
+      themeEl.style.setProperty(`--${t}-800`, this._800.toStr(format));
+      themeEl.style.setProperty(`--${t}-900`, this._900.toStr(format));
+      themeEl.style.setProperty(`--${t}-A100`, this._A100.toStr(format));
+      themeEl.style.setProperty(`--${t}-A200`, this._A200.toStr(format));
+      themeEl.style.setProperty(`--${t}-A400`, this._A400.toStr(format));
+      themeEl.style.setProperty(`--${t}-A700`, this._A700.toStr(format));
+    } else {
+      throw `No body element found!`
+    }
   };
 }
 
 export class Palette {
   palette: PaletteModel;
-  constructor(private color: Color, private type: ColorType) {}
+  constructor(private color: Color, private type: ColorType) { }
 
   public buildPalette = () => {
     return this.generatePalette(this.color);

@@ -1,48 +1,32 @@
-<mat-toolbar color="primary"> PRIMARY! </mat-toolbar>
-<mat-toolbar color="accent"> ACCENT! </mat-toolbar>
-<mat-toolbar color="warn"> WARN! </mat-toolbar>
+<div #THEME_CONTAINER>
+  <mat-toolbar color="primary"> PRIMARY! </mat-toolbar>
+  <mat-toolbar color="accent"> ACCENT! </mat-toolbar>
+  <mat-toolbar color="warn"> WARN! </mat-toolbar>
 
-<section class="margin1">
-  <div class="mat-h1">
-    Built-in Color Pickers
-  </div>
-  <mat-palette-picker
-    paletteType="PRIMARY"
-    [colorCode]="primary"
-  ></mat-palette-picker>
-  <mat-palette-picker paletteType="ACCENT" [colorCode]="accent"></mat-palette-picker>
-  <mat-palette-picker paletteType="WARN" [colorCode]="warn"></mat-palette-picker>
-</section>
+  <section class="margin1">
+    <div class="mat-h1">
+      Built-in Color Pickers
+    </div>
+    <mat-palette-picker paletteType="PRIMARY" [colorCode]="primary"></mat-palette-picker>
+    <mat-palette-picker paletteType="ACCENT" [colorCode]="accent"></mat-palette-picker>
+    <mat-palette-picker paletteType="WARN" [colorCode]="warn"></mat-palette-picker>
+  </section>
 
-<section class="margin1">
-  <div class="mat-h1">
-    Client Defined Pickers
-  </div>
-  <div>
-    <input
-      type="color"
-      #pPicker
-      (change)="primary = pPicker.value; updatePrimary()"
-      [value]="primary"
-    />
-    {{ primary }}
-  </div>
-  <div>
-    <input
-      type="color"
-      #aPicker
-      (change)="accent = aPicker.value; updateAccent()"
-      [value]="accent"
-    />
-    {{ accent }}
-  </div>
-  <div>
-    <input
-      type="color"
-      #wPicker
-      (change)="warn = wPicker.value; updateWarn()"
-      [value]="warn"
-    />
-    {{ warn }}
-  </div>
-</section>
+  <section class="margin1">
+    <div class="mat-h1">
+      Client Defined Pickers
+    </div>
+    <div>
+      <input type="color" #pPicker (change)="primary = pPicker.value; updatePrimary()" [value]="primary" />
+      {{ primary }}
+    </div>
+    <div>
+      <input type="color" #aPicker (change)="accent = aPicker.value; updateAccent()" [value]="accent" />
+      {{ accent }}
+    </div>
+    <div>
+      <input type="color" #wPicker (change)="warn = wPicker.value; updateWarn()" [value]="warn" />
+      {{ warn }}
+    </div>
+  </section>
+</div>

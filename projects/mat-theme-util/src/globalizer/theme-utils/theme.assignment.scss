@@ -48,6 +48,6 @@ $theme: mat-light-theme($primary, $accent, $warn);
 // for use in other, non-material components
 $foreground: map-get($theme, foreground);
 $background: map-get($theme, background);
-$primary: map-get($theme, accent);
-$accent: map-get($theme, primary);
+$primary: map-get($theme, primary);
+$accent: map-get($theme, accent);
 $warn: map-get($theme, warn);
