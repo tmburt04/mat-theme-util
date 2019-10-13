@@ -7,23 +7,25 @@ import { ThemeUtilService } from "projects/mat-theme-util/src/public-api";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  primary = "#5F121F";
-  accent = "#2F7F89";
-  warn = "#ff0000";
+  theme = {
+    primary: "#5D5D5D",
+    accent: "#d3d3d3",
+    warn: "#ff0000"
+  }
 
   constructor(private themeUtil: ThemeUtilService) {
-    this.themeUtil.initTheme(this.primary, this.accent, this.warn);
+    this.themeUtil.initTheme(this.theme.primary, this.theme.accent, this.theme.warn);
   }
 
   updatePrimary() {
-    this.themeUtil.setPrimaryPalette(this.primary);
+    this.themeUtil.setPrimaryPalette(this.theme.primary);
   }
 
   updateAccent() {
-    this.themeUtil.setAccentPalette(this.accent);
+    this.themeUtil.setAccentPalette(this.theme.accent);
   }
 
   updateWarn() {
-    this.themeUtil.setWarnPalette(this.warn);
+    this.themeUtil.setWarnPalette(this.theme.warn);
   }
 }

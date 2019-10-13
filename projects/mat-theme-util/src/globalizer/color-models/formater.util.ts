@@ -3,8 +3,11 @@
 
 import { Hex, RGB, HSL } from "./color-format.model";
 
-enum REGEX {
-  HEX = "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+export const REGEX = {
+  HEX: {
+    PARSE: /^#?([a-fA-F0-9]{1,2})([a-fA-F0-9]{1,2})([a-fA-F0-9]{1,2})$/i,
+    TEST: `^#([a-fA-F0-9]{1,2}){3}$`
+  }
 }
 
 /*
@@ -79,7 +82,7 @@ HEX Utilities
 
 const hex2RGB = (hex: Hex): RGB => {
   let r, g, b;
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex.parse());
+  const result = REGEX.HEX.PARSE.exec(hex.parse());
   if (!!result) {
     r = parseInt(result[1], 16);
     g = parseInt(result[2], 16);
@@ -94,7 +97,7 @@ const hex2Hsl = (hex: Hex): HSL => {
 };
 
 const testHex = str => {
-  return new RegExp(REGEX.HEX).test(str);
+  return new RegExp(REGEX.HEX.TEST).test(str);
 };
 
 const ParseHEX = {

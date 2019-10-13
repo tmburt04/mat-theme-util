@@ -1,9 +1,22 @@
-<div>
-  <input
-    type="color"
-    #colorPicker
-    (change)="_color = colorPicker.value; colorChange.emit(this._color)"
-    [value]="_color"
-  />
-  {{ _color }}
-</div>
+<mat-card class="rgb-picker">
+  <div class="sliders">
+    <h2 class="mat-h2 margin-unset">
+      {{paletteType}}
+    </h2>
+    <div class="red-slider short-slider">
+      <input #redSlider [value]="red" (change)="updateRed(redSlider.value)" type="range" max="255" />
+    </div>
+    <div class="green-slider short-slider">
+      <input #greenSlider [value]="green" (change)="updateGreen(greenSlider.value)" type="range" max="255" />
+    </div>
+    <div class="blue-slider short-slider">
+      <input #blueSlider [value]="blue" (change)="updateBlue(blueSlider.value)" type="range" max="255" />
+    </div>
+    <input type="text" class="hex-input" #hexInput (change)="hexColor = hexInput.value" [value]="hexColor"
+      (keyup)="setRGB()">
+  </div>
+  <div class="preview-container">
+    <div class="color-preview" [style.backgroundColor]="rgb"></div>
+    <button type="button" mat-stroked-button (click)="previewPalette()">Preview</button>
+  </div>
+</mat-card>

@@ -7,9 +7,7 @@
     <div class="mat-h1">
       Built-in Color Pickers
     </div>
-    <mat-palette-picker paletteType="PRIMARY" [colorCode]="primary"></mat-palette-picker>
-    <mat-palette-picker paletteType="ACCENT" [colorCode]="accent"></mat-palette-picker>
-    <mat-palette-picker paletteType="WARN" [colorCode]="warn"></mat-palette-picker>
+    <mat-palette-picker [(ngModel)]="theme"></mat-palette-picker>
   </section>
 
   <section class="margin1">
@@ -17,15 +15,15 @@
       Client Defined Pickers
     </div>
     <div>
-      <input type="color" #pPicker (change)="primary = pPicker.value; updatePrimary()" [value]="primary" />
+      <input type="color" #pPicker (change)="theme.primary = pPicker.value; updatePrimary()" [value]="theme.primary" />
       {{ primary }}
     </div>
     <div>
-      <input type="color" #aPicker (change)="accent = aPicker.value; updateAccent()" [value]="accent" />
+      <input type="color" #aPicker (change)="theme.accent = aPicker.value; updateAccent()" [value]="theme.accent" />
       {{ accent }}
     </div>
     <div>
-      <input type="color" #wPicker (change)="warn = wPicker.value; updateWarn()" [value]="warn" />
+      <input type="color" #wPicker (change)="theme.warn = wPicker.value; updateWarn()" [value]="theme.warn" />
       {{ warn }}
     </div>
   </section>
