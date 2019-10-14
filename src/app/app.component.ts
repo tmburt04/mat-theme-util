@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { ThemeUtilService } from "projects/mat-theme-util/src/public-api";
+import { ThemeUtilService } from '../../dist/mat-theme-util';
 
 @Component({
   selector: "app-root",

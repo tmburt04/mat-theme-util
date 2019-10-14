@@ -4,42 +4,24 @@
       {{ paletteType }}
     </h2>
     <div class="red-slider short-slider">
-      <input
-        #redSlider
-        [(ngModel)]="red"
-        (change)="updateRed(redSlider.value)"
-        type="range"
-        max="255"
-      />
+      <input #redSlider [(ngModel)]="red" type="range" max="255" />
     </div>
     <div class="green-slider short-slider">
-      <input
-        #greenSlider
-        [(ngModel)]="green"
-        (change)="updateGreen(greenSlider.value)"
-        type="range"
-        max="255"
-      />
+      <input #greenSlider [(ngModel)]="green" type="range" max="255" />
     </div>
     <div class="blue-slider short-slider">
-      <input
-        #blueSlider
-        [(ngModel)]="blue"
-        (change)="updateBlue(blueSlider.value)"
-        type="range"
-        max="255"
-      />
+      <input #blueSlider [(ngModel)]="blue" type="range" max="255" />
     </div>
     <div class="hex-input-container">
       #
-    <input
-      type="text"
-      class="hex-input"
-      #hexInput
-      [(ngModel)]="hexColor"
-      (keyup)="setRGB()"
-      (click)="hexInput.focus(); hexInput.select()"
-    />
+      <input
+        type="text"
+        class="hex-input"
+        #hexInput
+        [(ngModel)]="hexColor"
+        (keyup)="setRGB()"
+        (click)="hexInput.focus(); hexInput.select()"
+      />
     </div>
   </div>
   <div class="preview-container">

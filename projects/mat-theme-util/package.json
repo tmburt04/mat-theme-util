@@ -1,6 +1,6 @@
 {
   "name": "mat-theme-util",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Angular Material 8+ Helper Utility for managing Theme colors dynamically, and creating color palettes from single colors.",
   "author": "Tim M. Burton <timmichaelburton+mat-theme-util@gmail.com> (mailto:timmichaelburton+mat-theme-util@gmail.com)",
   "peerDependencies": {

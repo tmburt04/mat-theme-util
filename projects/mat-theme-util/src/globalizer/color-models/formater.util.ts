@@ -6,7 +6,7 @@ import { Hex, RGB, HSL } from "./color-format.model";
 export const REGEX = {
   HEX: {
     PARSE: /^#?([a-fA-F0-9]{1,2})([a-fA-F0-9]{1,2})([a-fA-F0-9]{1,2})$/i,
-    TEST: `^#?([a-fA-F0-9]{1,2}){3}$`
+    TEST: `^#?(([a-fA-F0-9]{2}){3}|([a-fA-F0-9]{1}){3})$`
   }
 }
 
