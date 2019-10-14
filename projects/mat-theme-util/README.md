@@ -203,6 +203,12 @@ export class AppModule { }
 
 ---
 
+### Release Notes
+
+### v0.2.0
+- New UI for ColorPicker/PalettePicker
+- Support for both a stringified and parsed JSON Theme object for the `<mat-palette-picker>` formControl value.
+
 ### Package Versioning
 
 - Angular CLI: 8.1.3
