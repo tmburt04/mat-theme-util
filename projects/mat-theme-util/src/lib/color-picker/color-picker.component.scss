@@ -39,48 +39,54 @@ $slider: #cdcdcd;
       @include slider();
     }
 
-    .hex-input {
-      border-top-color: initial;
-      border-top-style: none;
-      border-top-width: initial;
-      border-right-color: initial;
-      border-right-style: none;
-      border-right-width: initial;
-      border-bottom-color: gray;
-      border-bottom-style: solid;
-      border-bottom-width: 1px;
-      border-left-color: initial;
-      border-left-style: none;
-      border-left-width: initial;
-      border-image-source: initial;
-      border-image-slice: initial;
-      border-image-width: initial;
-      border-image-outset: initial;
-      border-image-repeat: initial;
-      animation-name: cdk-text-field-autofill-end;
-      -webkit-appearance: none;
-      font: inherit;
-      background: 0 0;
-      color: currentColor;
-      outline: 0;
-      padding: 0 0 0.25rem 0;
-      margin: 0;
-      width: 100%;
-      max-width: 100%;
-      vertical-align: bottom;
-      text-align: inherit;
-      caret-color: var(--P-500);
-      -webkit-writing-mode: horizontal-tb !important;
-      text-rendering: auto;
-      letter-spacing: normal;
-      word-spacing: normal;
-      text-transform: none;
-      text-indent: 0px;
-      text-shadow: none;
-      display: inline-block;
-      background-color: white;
-      -webkit-rtl-ordering: logical;
-      cursor: text;
+    .hex-input-container {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-column-gap: 3px;
+
+      .hex-input {
+        border-top-color: initial;
+        border-top-style: none;
+        border-top-width: initial;
+        border-right-color: initial;
+        border-right-style: none;
+        border-right-width: initial;
+        border-bottom-color: gray;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-left-color: initial;
+        border-left-style: none;
+        border-left-width: initial;
+        border-image-source: initial;
+        border-image-slice: initial;
+        border-image-width: initial;
+        border-image-outset: initial;
+        border-image-repeat: initial;
+        animation-name: cdk-text-field-autofill-end;
+        -webkit-appearance: none;
+        font: inherit;
+        background: 0 0;
+        color: currentColor;
+        outline: 0;
+        padding: 0 0 0.25rem 0;
+        margin: 0;
+        width: 100%;
+        max-width: 100%;
+        vertical-align: bottom;
+        text-align: inherit;
+        caret-color: var(--P-500);
+        -webkit-writing-mode: horizontal-tb !important;
+        text-rendering: auto;
+        letter-spacing: normal;
+        word-spacing: normal;
+        text-transform: none;
+        text-indent: 0px;
+        text-shadow: none;
+        display: inline-block;
+        background-color: white;
+        -webkit-rtl-ordering: logical;
+        cursor: text;
+      }
     }
   }
 

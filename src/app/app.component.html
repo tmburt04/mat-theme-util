@@ -16,15 +16,15 @@
     </div>
     <div>
       <input type="color" #pPicker (change)="theme.primary = pPicker.value; updatePrimary()" [value]="theme.primary" />
-      {{ primary }}
+      {{ theme.primary }}
     </div>
     <div>
       <input type="color" #aPicker (change)="theme.accent = aPicker.value; updateAccent()" [value]="theme.accent" />
-      {{ accent }}
+      {{ theme.accent }}
     </div>
     <div>
       <input type="color" #wPicker (change)="theme.warn = wPicker.value; updateWarn()" [value]="theme.warn" />
-      {{ warn }}
+      {{ theme.warn }}
     </div>
   </section>
 </div>

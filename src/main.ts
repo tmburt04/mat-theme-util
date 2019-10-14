@@ -11,5 +11,10 @@ if (environment.production) {
 
 platformBrowserDynamic()
    .bootstrapModule(
-       AppModule, { ngZone: 'noop' })
+       AppModule)
    .catch(err => console.log(err));
+
+/***************************************************************************************************
+ * Zone JS is required by default for Angular change detection
+ */
+import "zone.js/dist/zone";

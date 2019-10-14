@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { MatToolbarModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AppComponent } from './app.component';
 import { ThemeUtilModule, ThemeUtilService } from "projects/mat-theme-util/src/public-api";
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,13 +15,11 @@ import { ThemeUtilModule, ThemeUtilService } from "projects/mat-theme-util/src/p
     ThemeUtilModule,
     MatToolbarModule,
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [
     ThemeUtilService
-  ],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA
   ],
   bootstrap: [AppComponent]
 })

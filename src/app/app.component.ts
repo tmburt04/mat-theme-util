@@ -11,7 +11,7 @@ export class AppComponent {
     primary: "#5D5D5D",
     accent: "#d3d3d3",
     warn: "#ff0000"
-  }
+  };
 
   constructor(private themeUtil: ThemeUtilService) {
     this.themeUtil.initTheme(this.theme.primary, this.theme.accent, this.theme.warn);

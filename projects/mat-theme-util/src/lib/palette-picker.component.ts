@@ -1,17 +1,11 @@
 import { Component, Input, forwardRef } from "@angular/core";
 import { ThemeUtilService } from "./theme-util.service";
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 
 @Component({
   selector: "mat-palette-picker",
-  template: `
-  <div class="col3-xl col3-lg col3-md col2-sm col2-xs">
-    <app-color-picker paletteType="Primary" [(ngModel)]="primary"></app-color-picker>
-    <app-color-picker paletteType="Accent" [(ngModel)]="accent"></app-color-picker>
-    <app-color-picker paletteType="Warn" [(ngModel)]="warn"></app-color-picker>
-</div>
-  `,
-  styles: [],
+  templateUrl: "./palette-picker.component.html",
+  styleUrls: [],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -21,8 +15,19 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ]
 })
 export class PalettePickerComponent implements ControlValueAccessor {
+  isObjectInput: boolean;
 
   chgFn;
+
+  get value(): any {
+    return this.themeStr();
+  }
+  set value(v: any) {
+    if (!!v && v !== this.themeStr()) {
+      this.writeValue(v);
+      this.chgFn(v);
+    }
+  }
 
   _primary: string;
   get primary() {
@@ -52,22 +57,23 @@ export class PalettePickerComponent implements ControlValueAccessor {
     this.updateTheme();
   }
 
-  constructor(
-    public theme: ThemeUtilService
-  ) {
-  }
+  constructor(public theme: ThemeUtilService) {}
 
   updateTheme() {
+    this.chgFn(this.themeStr());
+  }
+
+  themeStr() {
     const theme = {
       primary: this._primary,
       accent: this._accent,
-      warn: this._warn,
-    }
-    this.chgFn(JSON.stringify(theme));
+      warn: this._warn
+    };
+    return new BaseTheme(theme);
   }
 
-  writeValue(str): void {
-    console.log(str)
+  writeValue(str: string | object): void {
+    this.isObjectInput = typeof str === "object";
     const theme = new BaseTheme(str);
     this._primary = theme.primary;
     this._accent = theme.accent;
@@ -75,11 +81,16 @@ export class PalettePickerComponent implements ControlValueAccessor {
   }
 
   registerOnChange(fn: any): void {
-    this.chgFn = fn;
+    // Intercept the chgFn to return the type received initially
+    this.chgFn = val => {
+      const obj = this.isObjectInput ? val : JSON.stringify(val);
+      fn(obj);
+    };
   }
 
-  registerOnTouched(fn: any): void { }
+  registerOnTouched(fn: any): void {}
   _colorCode: string;
+
   @Input("colorCode")
   get colorCode() {
     return this._colorCode;
@@ -97,14 +108,21 @@ export class BaseTheme {
   public accent: string = DEFAULT.A;
   public warn: string = DEFAULT.W;
 
-  constructor(str: string) {
-    if (!!str) {
-      const parsed = JSON.parse(str);
-      if (!!parsed) {
-        this.primary = parsed.primary ? parsed.primary : DEFAULT.P;
-        this.accent = parsed.accent ? parsed.accent : DEFAULT.A;
-        this.warn = parsed.warn ? parsed.warn : DEFAULT.W;
+  constructor(obj: string | object) {
+    if (!!obj) {
+      if (typeof obj === "string") {
+        this.parseObj(JSON.parse(obj));
+      } else {
+        this.parseObj(obj);
       }
+    }
+  }
+
+  private parseObj(obj) {
+    if (!!obj) {
+      this.primary = obj.primary ? obj.primary : DEFAULT.P;
+      this.accent = obj.accent ? obj.accent : DEFAULT.A;
+      this.warn = obj.warn ? obj.warn : DEFAULT.W;
     }
   }
 }

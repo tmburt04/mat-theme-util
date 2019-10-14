@@ -1,6 +1,12 @@
-import { Component, Input, Output, EventEmitter, forwardRef } from "@angular/core";
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { REGEX } from '../../globalizer/color-models/formater.util';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  forwardRef
+} from "@angular/core";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
+import { REGEX } from "../../globalizer/color-models/formater.util";
 @Component({
   selector: "app-color-picker",
   templateUrl: "./color-picker.component.html",
@@ -14,35 +20,23 @@ import { REGEX } from '../../globalizer/color-models/formater.util';
   ]
 })
 export class ColorPickerComponent implements ControlValueAccessor {
-
   regex: string = REGEX.HEX.TEST;
 
-  @Input('paletteType') paletteType;
+  @Input("paletteType") paletteType;
+
   onChg;
 
   red;
   green;
   blue;
 
-  updateRed(str) {
-    this.red = str;
-  }
-
-  updateGreen(str) {
-    this.green = str;
-  }
-
-  updateBlue(str) {
-    this.blue = str;
-  }
-
   _staging: string;
-  _hexColor
+  _hexColor;
   get hexColor() {
     const _r: string = this.parseHex(this.red);
     const _g: string = this.parseHex(this.green);
     const _b: string = this.parseHex(this.blue);
-    this._hexColor = `#${_r}${_g}${_b}`.toUpperCase();
+    this._hexColor = `${_r}${_g}${_b}`.toUpperCase();
     return this._hexColor;
   }
   set hexColor(str) {
@@ -56,7 +50,25 @@ export class ColorPickerComponent implements ControlValueAccessor {
   setRGB() {
     setTimeout(() => {
       this.updateRGB(this._staging);
-    }, 1500)
+    }, 1500);
+  }
+
+  constructor() {
+    this.red = "255";
+    this.green = "255";
+    this.blue = "255";
+  }
+
+  updateRed(str) {
+    this.red = str;
+  }
+
+  updateGreen(str) {
+    this.green = str;
+  }
+
+  updateBlue(str) {
+    this.blue = str;
   }
 
   updateRGB(str: string): void {
@@ -72,23 +84,31 @@ export class ColorPickerComponent implements ControlValueAccessor {
   }
 
   previewPalette() {
-    this.onChg(this._hexColor);
+    this.onChg(this.hexColor);
   }
 
   parseHex = v => {
     if (v != null) {
+      if (typeof v === "string") {
+        v = parseInt(v);
+      }
       const hex = v.toString(16);
       return hex.length > 1 ? hex : `${hex}${hex}`;
     }
-    return 'FF';
+    return "FF";
   };
 
   writeValue(str: string): void {
     this.updateRGB(str);
   }
   registerOnChange(fn: any): void {
-    this.onChg = fn;
+    this.onChg = (val: string) => {
+      let hex = val;
+      if (val.indexOf("#") === -1) {
+        hex = `#${hex}`;
+      }
+      fn(hex);
+    };
   }
-  registerOnTouched(fn: any): void {
-  }
+  registerOnTouched(fn: any): void {}
 }
