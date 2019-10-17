@@ -7,13 +7,19 @@ This library _should_ seamlessly integrate with most Angular Material applicatio
 ## Release Notes
 
 ## v0.2
-**v0.2.0**
-- New UI for ColorPicker/PalettePicker
-- Support for both a stringified and parsed JSON Theme object for the `<mat-palette-picker>` formControl value.
+
+**v0.2.2**
+
+- Support for `padding-unset`
+- Removed logging
 
 **v0.2.1**
+
 - More Effective regex for Hex codes
 - Dead code removal
+  **v0.2.0**
+- New UI for ColorPicker/PalettePicker
+- Support for both a stringified and parsed JSON Theme object for the `<mat-palette-picker>` formControl value.
 
 ### Pre-reqs
 
@@ -209,6 +215,10 @@ export class AppModule { }
 - `hpadding{1-6}`
 
   Preset horizontal padding class, with the number denoting the 'rem'
+
+- `padding-unset`
+
+  Preset padding class, setting the padding to 'unset'
 
 ---
 
