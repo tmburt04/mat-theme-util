@@ -56,7 +56,6 @@ export class ColorPickerComponent implements ControlValueAccessor {
   updateRGB(str: string): void {
     const parse = hex => parseInt(hex, 16);
     const valid = new RegExp(REGEX.HEX.TEST).test(str);
-    console.log(valid, str)
     if (valid) {
       this._hexColor = str;
       const map = REGEX.HEX.PARSE.exec(str);

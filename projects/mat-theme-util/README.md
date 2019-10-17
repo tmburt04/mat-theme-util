@@ -4,6 +4,17 @@ This library is a interface for Angular Material UI Library and custom colors. T
 
 This library _should_ seamlessly integrate with most Angular Material applications - requiring very little (if any) modification on the Material Side.
 
+## Release Notes
+
+## v0.2
+**v0.2.0**
+- New UI for ColorPicker/PalettePicker
+- Support for both a stringified and parsed JSON Theme object for the `<mat-palette-picker>` formControl value.
+
+**v0.2.1**
+- More Effective regex for Hex codes
+- Dead code removal
+
 ### Pre-reqs
 
 - Angular CLI
@@ -202,12 +213,6 @@ export class AppModule { }
 ---
 
 ---
-
-### Release Notes
-
-### v0.2.0
-- New UI for ColorPicker/PalettePicker
-- Support for both a stringified and parsed JSON Theme object for the `<mat-palette-picker>` formControl value.
 
 ### Package Versioning
 
